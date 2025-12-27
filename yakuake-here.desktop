@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Service
+MimeType=inode/directory;
+Actions=openYakuakeHere;
+X-KDE-Priority=TopLevel
+Icon=yakuake
+
+[Desktop Action openYakuakeHere]
+Name=Open in Yakuake
+Name[zh_CN]=在 Yakuake 中打开
+Icon=yakuake
+Exec=sh -c 'if ! pgrep -x "yakuake" > /dev/null; then yakuake & sleep 1; fi; QCMD=$(command -v qdbus6 || command -v qdbus); $QCMD org.kde.yakuake /yakuake/sessions addSession ""; $QCMD org.kde.yakuake /yakuake/sessions runCommand "cd %f"; $QCMD org.kde.yakuake /yakuake/window toggleWindowState'
